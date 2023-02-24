@@ -1,0 +1,5 @@
+/COMMIT_EDITMSG
+node_modules
+.env
+.Git
+config

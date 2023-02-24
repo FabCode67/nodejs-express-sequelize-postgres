@@ -1,1 +1,1 @@
-# nodejs-express-sequelize-postgres
+# nodejs-express-sequelize-mysql
