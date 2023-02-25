@@ -1,16 +1,18 @@
 import { User, Message } from '../models';
 export const createMessage = async (req, res) => {
     try {
-      const userId = req.params.id;
-      const user = await User.findByPk(userId);
-      if (!user) {
+      const userId = req.params.id; 
+      const user = await User.findByPk(userId, {
+        attributes: ['id','username', 'email']
+      });
+       if (!user) {
         res.status(404).json({ error: 'User not found' });
         return;
       }
   
       const message = await Message.create({
-        username: req.body.username,
-        email: req.body.email,
+        username: user.username,
+        email: user.email,
         message: req.body.message,
         userId: user.id
       });
