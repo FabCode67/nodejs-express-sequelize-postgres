@@ -1,4 +1,4 @@
-import { User, Message } from '../models';
+import { User, Message } from '../../models';
 export const createMessage = async (req, res) => {
     try {
       const userId = req.params.id; 
