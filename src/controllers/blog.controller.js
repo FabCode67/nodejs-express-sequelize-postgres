@@ -19,6 +19,41 @@ export const createBlog =   async (req, res)=> {
     });
 };
 
+export const updateBlog = async (req, res) => {
+  try {
+    const blogId = req.params.id;
+    const blog = await Blog.findByPk(blogId);
+
+    if (!blog) {
+      return res.status(404).json({
+        status: "error",
+        message: "Blog not found",
+      });
+    }
+
+    // Update the blog with the new values
+    const result = await cloudinary.uploader.upload(req.file.path);
+    const updatedBlog = await blog.update({
+      blogTitle: req.body.blogTitle,
+      blogDescription: req.body.blogDescription,
+      blogImage: result.secure_url,
+    });
+
+    res.status(200).json({
+      status: "success",
+      message: "Blog updated successfully",
+      data: updatedBlog,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: "error",
+      message: "Internal server error",
+    });
+  }
+};
+
+
 
 export const getBlogWithComments = async (req, res) => {
   const blogId = req.params.blogId;
@@ -89,3 +124,18 @@ export const getBlogById = async (req, res) => {
     res.status(500).send({ status: 'error', message: 'Internal server error' });
   }
 };
+
+export const deleteBlog = async (req, res) => {
+  try {
+    const blogId = req.params.id; 
+    const blog = await Blog.findByPk(blogId); 
+    if (!blog) {
+      return res.status(404).send({ status: "fail", message: "blog not found" });
+    }
+    await blog.destroy(); 
+    res.status(200).send({ status: "success", message: "blog deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ status: "fail", message: "Failed to delete blog" });
+  }
+}

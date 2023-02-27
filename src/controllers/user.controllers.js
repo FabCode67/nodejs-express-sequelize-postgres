@@ -67,12 +67,12 @@ export const getUserWithMessages = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    const userId = req.params.id; // get the user id from the request parameters
-    const user = await User.findByPk(userId); // find the user by id
+    const userId = req.params.id; 
+    const user = await User.findByPk(userId); 
     if (!user) {
-      return res.status(404).send({ status: "fail", message: "User not found" }); // return 404 if user is not found
+      return res.status(404).send({ status: "fail", message: "User not found" });
     }
-    await user.destroy(); // delete the user
+    await user.destroy(); 
     res.status(200).send({ status: "success", message: "User deleted successfully" });
   } catch (error) {
     console.log(error);
