@@ -17,3 +17,4 @@ app.use('/api', _message.default);
 app.use('/api', _blog.default);
 app.use('/api', _comment.default);
 app.listen(process.env.PORT, () => console.log(`running on port ${process.env.PORT}`));
+export default app;

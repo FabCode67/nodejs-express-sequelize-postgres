@@ -9,7 +9,7 @@
     "dev": "npm run build && nodemon --exec babel-node src/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_ENV=test sequelize db:migrate && cross-env NODE_ENV=test nyc --require @babel/register --reporter=text --reporter=html --reporter=clover --reporter=lcov --reporter=teamcity mocha --exit --recursive test/*.js --coverage"
   },
   "repository": {
     "type": "git",
@@ -41,10 +41,16 @@
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
     "@babel/register": "^7.18.9",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
     "prettier": "^2.8.4",
     "sequelize-cli": "^6.6.0"
   }

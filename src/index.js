@@ -17,4 +17,4 @@ app.use('/api',commentRout)
 
 app.listen(process.env.PORT, () => console.log(`running on port ${process.env.PORT}`))
   
-  
+module.exports = app;  
