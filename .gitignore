@@ -1,5 +1,9 @@
-/COMMIT_EDITMSG
+coverage
+
+COMMIT_EDITMSG
 node_modules
 .env
 .Git
 config
+
+.nyc_output
