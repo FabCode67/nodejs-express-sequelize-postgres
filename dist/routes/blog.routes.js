@@ -9,4 +9,6 @@ router.post("/blog/post", _multer.default.single("blogImage"), _blog.createBlog)
 router.get("/blog/:blogId/comments/get", _blog.getBlogWithComments);
 router.get("/blog/get", _blog.getAllBlogs);
 router.get("/blog/:id/get", _blog.getBlogById);
+router.delete("/blog/:id/delete", _blog.deleteBlog);
+router.patch("/blog/:id/update", _multer.default.single("blogImage"), _blog.updateBlog);
 module.exports = router;
