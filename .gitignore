@@ -1,9 +1,4 @@
+.env
+dist
 coverage
 
-COMMIT_EDITMSG
-node_modules
-.env
-.Git
-config
-
-.nyc_output
